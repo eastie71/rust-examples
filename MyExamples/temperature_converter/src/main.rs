@@ -26,7 +26,6 @@ fn read_line_to_string() -> String {
 fn get_enter_scale_type() -> char {
     loop {
         println!("\nEnter the Temperature type you want to convert FROM.\nEnter either F (Fahrenheit) or C (Celsius)");
-
         let mut scale_type: String = read_line_to_string();
 
         scale_type = scale_type.trim().to_uppercase();
@@ -35,34 +34,19 @@ fn get_enter_scale_type() -> char {
             println!("Must enter either F or C");
             continue;
         }
-        // let char_type: char = match scale_type.chars().next() {
-        //     Some(c) => {
-        //         if c.to_uppercase().to_string() != "F" && c.to_uppercase().to_string() != "C" {
-        //             println!("Must enter either F or C");
-        //             continue;
-        //         }
-        //         c
-        //     },
-        //     None => {
-        //         println!("Must enter either F or C");
-        //         continue;
-        //     }
-        // };
 
         return scale_type.chars().next().expect("Unexpected error: Try again!");
-        //println!("Type entered = {}", char_type);
-        //return char_type;
     }
 }
 
-fn calc_fahrenheit_from_celsius() {
-    let temp_c: i32;
+fn read_number_with_prompt(prompt: String) -> i32 {
+    let result: i32;
 
     loop {
-        println!("Enter temperature in Celsuis (no decimals) to convert to Fahnenheit:");
+        println!("{}", prompt);
         let temp: String = read_line_to_string();
 
-        temp_c = match temp.parse() {
+        result = match temp.parse() {
             Ok(num) => num,
             Err(_) => {
                 println!("Must enter a valid integer number");
@@ -71,28 +55,17 @@ fn calc_fahrenheit_from_celsius() {
         };
         break;
     }
+    return result;
+}
 
+fn calc_fahrenheit_from_celsius() {
+    let temp_c: i32 = read_number_with_prompt("Enter temperature in Celsuis (no decimals) to convert to Fahnenheit:".to_string());
     let temp_f: f64 = (temp_c as f64 * 9.0 / 5.0) + 32.0;
     println!("{}°C converts to {:.1}°F", temp_c, temp_f);
 }
 
 fn calc_celsius_from_fahrenheit() {
-    let temp_f: i32;
-
-    loop {
-        println!("Enter temperature in Fahrenheit (no decimals) to convert to Celsuis:");
-        let temp: String = read_line_to_string();
-
-        temp_f = match temp.parse() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Must enter a valid integer number");
-                continue;
-            }
-        };
-        break;
-    }
-    
+    let temp_f: i32 = read_number_with_prompt("Enter temperature in Fahrenheit (no decimals) to convert to Celsuis:".to_string());
     let temp_c: f64 = (temp_f as f64 - 32.0)* 5.0 / 9.0;
     println!("{}°F converts to {:.1}°C", temp_f, temp_c);
 }
