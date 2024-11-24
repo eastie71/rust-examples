@@ -40,16 +40,19 @@ fn main() {
     println!("s7 = {}", s7);
 }
 
+// takes ownership
 fn add_me_to_string_v1(mut s: String) -> String {
     s.push_str(", from CRAIG1!");
     s
 }
 
+// borrows mutably - no need to return string here - just done for example purpose
 fn add_me_to_string_v2(s: &mut String) -> String {
     s.push_str(": from CRAIG2!");
     s.to_string()
 }
 
+// borrows immutably
 fn remove_letter_l_v1(s: &String) -> String {
     let bytes = s.as_bytes();
     let mut result = String::from("");

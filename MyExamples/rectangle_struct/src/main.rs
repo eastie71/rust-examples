@@ -1,3 +1,6 @@
+// Examples using structs
+// https://doc.rust-lang.org/book/ch05-01-defining-structs.html
+
 #[derive(Debug)]
 struct Rectangle1 {
     width: u32,
