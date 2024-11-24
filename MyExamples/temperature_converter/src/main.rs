@@ -1,5 +1,8 @@
 use std::io;
 
+// Rust Book - suggested program to build.
+// https://doc.rust-lang.org/book/ch03-05-control-flow.html?highlight=fahren#summary
+
 fn main() {
     println!("\nTemperature calculator - From Fahrenheit to Celsius (or vice versa)");
 
