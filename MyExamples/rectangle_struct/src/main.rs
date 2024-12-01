@@ -57,6 +57,13 @@ fn main() {
     let sq1 = Rectangle2::square(70);
     dbg!(&sq1);
     println!("Can rect3 hold sq1?: {}", rect3.can_hold(&sq1));
+
+    let config_max = Some(3u8);
+    if let Some(max) = config_max {
+        println!("The maximum is configured to be {max}");
+    }
+
+    println!("Config max = {config_max:?}");
 }
 
 fn area(rect: &Rectangle1) -> u32 {
