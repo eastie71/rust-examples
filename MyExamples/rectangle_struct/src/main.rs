@@ -15,12 +15,14 @@ struct Rectangle2 {
 
 // define some methods, and a function "square"
 impl Rectangle2 {
+    // These are "Methods" as they contain "self" parameter
     fn area(&self) -> u32 {
         self.height * self.width
     }
     fn can_hold(&self, other: &Rectangle2) -> bool {
         self.width > other.width && self.height > other.height
     }
+    // Considered "Associated" functions, and use the :: syntax to call them
     fn square(size: u32) -> Self {
         Self {
             width: size,
